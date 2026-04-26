@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReachIn</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 340px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+        }
+
+        .header {
+            background: #0a66c2;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-icon {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .header-text h1 {
+            font-size: 15px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.2px;
+        }
+
+        .header-text p {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.75);
+            margin-top: 1px;
+        }
+
+        .body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #444;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        textarea,
+        input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1.5px solid #dce1e7;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #1a1a1a;
+            background: #f9fafb;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            font-family: inherit;
+            resize: none;
+        }
+
+        textarea {
+            height: 90px;
+            line-height: 1.5;
+        }
+
+        textarea:focus,
+        input:focus {
+            border-color: #0a66c2;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.12);
+        }
+
+        textarea::placeholder,
+        input::placeholder {
+            color: #aab0b8;
+            font-size: 12px;
+        }
+
+        .hint {
+            font-size: 11px;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        .divider {
+            height: 1px;
+            background: #eef0f3;
+            margin: 0 -20px;
+        }
+
+        .footer {
+            padding: 14px 20px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn {
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 0.2px;
+        }
+
+        .btn-cancel {
+            background: transparent;
+            border: none;
+            color: #666;
+        }
+
+        .btn-cancel:hover {
+            color: #1a1a1a;
+            background: #f3f4f6;
+        }
+
+        .btn-save {
+            background: transparent;
+            border: 2px solid #0a66c2;
+            color: #0a66c2;
+        }
+
+        .btn-save:hover {
+            background: #0a66c2;
+            color: white;
+        }
+
+        .toast {
+            margin: 0 20px 14px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            display: none;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toast.success {
+            background: #f0faf4;
+            border: 1px solid #86efac;
+            color: #166534;
+        }
+
+        .toast.error {
+            background: #fff5f5;
+            border: 1px solid #fca5a5;
+            color: #991b1b;
+        }
+
+        .toast.show {
+            display: flex;
+        }
+
+        .saved-badge {
+            display: none;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            color: #0a66c2;
+            font-weight: 600;
+            margin-right: auto;
+        }
+
+        .saved-badge.show {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="header-icon">✨</div>
+        <div class="header-text">
+            <h1>ReachIn</h1>
+            <p>Personalized LinkedIn messages</p>
+        </div>
+    </div>
+
+    <div class="body">
+        <div class="field">
+            <label>Your Summary</label>
+            <textarea id="summary"
+                placeholder="e.g. Frontend developer with 3 years experience in React. Building developer tools. Interested in open source."></textarea>
+            <span class="hint">Used to personalize your connection messages.</span>
+        </div>
+
+        <div class="field">
+            <label>OpenAI API Key</label>
+            <input type="password" id="apiKey" placeholder="sk-..." />
+            <span class="hint">Stored locally. Never sent anywhere except OpenAI.</span>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <div class="divider"></div>
+
+    <div class="footer">
+        <span class="saved-badge" id="savedBadge">✓ Saved</span>
+        <button class="btn btn-cancel" id="cancelBtn">Cancel</button>
+        <button class="btn btn-save" id="saveBtn">Save</button>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>
