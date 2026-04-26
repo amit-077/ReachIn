@@ -1,3 +1,7 @@
+<img width="300" height="300" alt="icon (1)" src="https://github.com/user-attachments/assets/dc4ae376-3db1-4b58-8e02-ff3e5a518139" />
+
+
+
 # 🚀 ReachIn
 
 **ReachIn** is a Chrome extension that helps you write **personalized LinkedIn connection messages** using AI.
