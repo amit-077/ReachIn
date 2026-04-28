@@ -22,7 +22,7 @@ It analyzes a profile’s content and generates concise, context-aware outreach 
 
 > ⚠️ ReachIn is not yet on the Chrome Web Store. For now, you need to install it locally.
 
-## How to install (video)
+## How to install and use (video)
 https://github.com/user-attachments/assets/2130ef72-6665-46a3-803c-3bbeb6d7a2fc
 
 
